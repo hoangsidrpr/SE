@@ -1,15 +1,14 @@
 const express = require('express')
 const app = express()
 
-app.set('view engine','ejs')
+app.use(express.static("public"))
 
-app.get('/',(req,res)=> {
-    console.log("here")
-    res.render('index',{text: "wou"})
-})
+app.set('view engine','ejs')
 
 const userRouter=require('./routes/users')
 
 app.use('/users',userRouter)
+
+
 
 app.listen(3000)
